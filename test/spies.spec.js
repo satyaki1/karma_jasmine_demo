@@ -8,9 +8,13 @@ describe("Example Of jasmine Spy using spyOn()", function () {
         spyOn(dictionary, "world"); // replace world function with another spy 
 
         person.sayHelloWorld(dictionary);
+        
         expect(dictionary.hello).toHaveBeenCalled();
-
         expect(dictionary.world).toHaveBeenCalled();
+
+//        Simply using spyOn makes a spy function that knows whether something’s been called.If you want to spy on a function and make sure that it still works, you can call through.
+        var result = person.sayHelloWorld(dictionary);
+        expect(result).toEqual("hello world"); // not possible without calling through. Test case will fail!
     });
 
 });
